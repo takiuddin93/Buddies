@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1820351561/android.video_player.iml" filepath="$PROJECT_DIR$/.idea/modules/-1820351561/android.video_player.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/2139200854/com.baseflow.geolocator.android.geolocator.iml" filepath="$PROJECT_DIR$/.idea/modules/2139200854/com.baseflow.geolocator.android.geolocator.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-82618560/com.tekartik.sqflite.android.sqflite.iml" filepath="$PROJECT_DIR$/.idea/modules/-82618560/com.tekartik.sqflite.android.sqflite.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/600323911/io.flutter.plugins.firebase.auth.android.firebase_auth.iml" filepath="$PROJECT_DIR$/.idea/modules/600323911/io.flutter.plugins.firebase.auth.android.firebase_auth.iml" />

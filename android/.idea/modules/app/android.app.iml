@@ -142,6 +142,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: androidx.test.espresso:espresso-idling-resource:3.3.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: junit:junit:4.13.1" level="project" />
     <orderEntry type="module" module-name="io.flutter.plugins.googlesignin.android.google_sign_in" />
+    <orderEntry type="module" module-name="android.video_player" />
     <orderEntry type="module" module-name="io.flutter.plugins.firebase.storage.android.firebase_storage" />
     <orderEntry type="module" module-name="com.tekartik.sqflite.android.sqflite" />
     <orderEntry type="module" module-name="io.flutter.plugins.flutter_plugin_android_lifecycle.android.flutter_plugin_android_lifecycle" />

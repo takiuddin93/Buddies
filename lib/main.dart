@@ -1,3 +1,4 @@
+import 'package:Buddies/screens/videoTest.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:Buddies/screens/loginPage.dart';
@@ -29,6 +30,7 @@ class _MainPageState extends State<Main> {
       debugShowCheckedModeBanner: false,
       title: 'Buddies',
       theme: ThemeData(brightness: Brightness.dark),
+      // home: VideoTest(),
       home: FutureBuilder(
         future: _authenticationMethods.getCurrentUser(),
         builder: (context, AsyncSnapshot<User> snapshot) {
