@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:Buddies/screens/homePage.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-
-final GoogleSignIn _googleSignIn = GoogleSignIn();
+import 'package:Buddies/screens/dashboardPage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:Buddies/resources/authentication_methods.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -12,38 +11,7 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   bool isLoggedIn = false;
-
-  void initState() {
-    super.initState();
-    _googleSignIn.onCurrentUserChanged.listen((googleSignInAccount) {
-      _googleLoginControl(googleSignInAccount);
-    }, onError: (gError) {
-      print("Error Message: " + gError);
-    });
-    _googleSignIn
-        .signInSilently(suppressErrors: false)
-        .then((googleSignInAccount) {
-      _googleLoginControl(googleSignInAccount);
-    }).catchError((gError) {
-      print("Error Message: " + gError);
-    });
-  }
-
-  _googleLoginControl(GoogleSignInAccount googleSignInAccount) async {
-    if (googleSignInAccount != null) {
-      setState(() {
-        isLoggedIn = true;
-      });
-    } else {
-      setState(() {
-        isLoggedIn = false;
-      });
-    }
-  }
-
-  _googleLogin() {
-    _googleSignIn.signIn();
-  }
+  final AuthenticationMethods _authenticationMethods = AuthenticationMethods();
 
   Scaffold loginScreen() {
     print("Login Screen: " + isLoggedIn.toString());
@@ -94,21 +62,32 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    if (isLoggedIn) {
-      return Navigator(
-        pages: [
-          MaterialPage(child: Home()),
-        ],
-        onPopPage: (route, result) {
-          if (!route.didPop(result)) {
-            return false;
-          } else {
-            return true;
-          }
-        },
-      );
-    } else {
-      return loginScreen();
-    }
+    return loginScreen();
+  }
+
+  _googleLogin() {
+    _authenticationMethods.signInWithGoogle().then((User user) {
+      if (user != null) {
+        authenticateUser(user);
+      } else {
+        print("There was an error");
+      }
+    });
+  }
+
+  void authenticateUser(User user) {
+    _authenticationMethods.authenticateUser(user).then((isNewUser) {
+      if (isNewUser) {
+        _authenticationMethods.addDataToDb(user).then((value) {
+          Navigator.pop(context);
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (BuildContext context) => Dashboard()));
+        });
+      } else {
+        Navigator.pop(context);
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (BuildContext context) => Dashboard()));
+      }
+    });
   }
 }

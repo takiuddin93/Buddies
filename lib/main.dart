@@ -1,36 +1,42 @@
-import 'package:Buddies/screens/loginPage.dart';
 import 'package:flutter/material.dart';
-import 'package:Buddies/screens/homePage.dart';
+import 'package:flutter/services.dart';
+import 'package:Buddies/screens/loginPage.dart';
+import 'package:Buddies/screens/dashboardPage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:Buddies/resources/authentication_methods.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 bool isLoggedIn = false;
 
-void main() {
-  runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(Main());
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class Main extends StatefulWidget {
+  @override
+  _MainPageState createState() => _MainPageState();
+}
+
+class _MainPageState extends State<Main> {
+  final AuthenticationMethods _authenticationMethods = AuthenticationMethods();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Buddies',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.black,
-        dialogBackgroundColor: Colors.black,
-        primarySwatch: Colors.grey,
-        cardColor: Colors.white70,
-        accentColor: Colors.black,
-      ),
-      home: Navigator(
-        pages: [
-          MaterialPage(child: Login()),
-        ],
-        onPopPage: (route, result) {
-          if (!route.didPop(result)) {
-            return false;
+      title: 'Buddies',
+      theme: ThemeData(brightness: Brightness.dark),
+      home: FutureBuilder(
+        future: _authenticationMethods.getCurrentUser(),
+        builder: (context, AsyncSnapshot<User> snapshot) {
+          print("SNAPSHOT DATA: " + snapshot.hasData.toString());
+          if (snapshot.hasData != false) {
+            return Dashboard();
           } else {
-            return true;
+            return Login();
           }
         },
       ),

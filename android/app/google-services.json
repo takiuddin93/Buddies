@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "540483318337",
+    "firebase_url": "https://buddies-c3a9a-default-rtdb.firebaseio.com",
     "project_id": "buddies-c3a9a",
     "storage_bucket": "buddies-c3a9a.appspot.com"
   },
@@ -19,6 +20,22 @@
           "android_info": {
             "package_name": "com.example.buddies",
             "certificate_hash": "aa368aaa06ccee6655e1e265af0280e093d1ddc5"
+          }
+        },
+        {
+          "client_id": "540483318337-mep5fem9fem9l0tnrcusg1ul2pcijh3m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.buddies",
+            "certificate_hash": "80fb6ea8d5bf04551b7f16516ff7a38536aa3154"
+          }
+        },
+        {
+          "client_id": "540483318337-rn9dlkdanu4b0uak62h6be334skv7p9p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.buddies",
+            "certificate_hash": "2cb510f0e6b26eca6a38595056e22606c9951a5d"
           }
         },
         {
