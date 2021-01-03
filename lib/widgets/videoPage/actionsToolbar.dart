@@ -1,3 +1,4 @@
+import 'package:Buddies/constants/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -38,8 +39,7 @@ class ActionsToolbar extends StatelessWidget {
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(25.0)),
         child: CachedNetworkImage(
-          imageUrl:
-              'https://2.bp.blogspot.com/-iXsSQbijS2c/Tyw4Hz_BsWI/AAAAAAAADY4/koZlEyBVUN4/s1600/Ace+Ventura+3.gif',
+          imageUrl: imageUrl,
           imageBuilder: (context, imageProvider) => Container(
             decoration: BoxDecoration(
               shape: BoxShape.circle,

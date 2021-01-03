@@ -68,38 +68,43 @@ class _DashboardState extends State<Dashboard> {
               child: Container(
                 child: ClipRRect(
                   borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                  child: CupertinoTabBar(
+                  child: BottomNavigationBar(
+                    type: BottomNavigationBarType.fixed,
+                    currentIndex: _getPageIndex,
+                    onTap: _onTapChangePage,
+                    backgroundColor: Colors.transparent,
+                    selectedItemColor: Colors.pink,
+                    unselectedItemColor: Colors.blueGrey,
                     items: [
                       BottomNavigationBarItem(
+                        label: '',
                         icon: Icon(
                           Icons.home,
                           color: Theme.of(context).accentColor,
                         ),
                       ),
                       BottomNavigationBarItem(
+                        label: '',
                         icon: Icon(
                           Icons.timeline,
                           color: Theme.of(context).accentColor,
                         ),
                       ),
                       BottomNavigationBarItem(
+                        label: '',
                         icon: Icon(
                           Icons.search,
                           color: Theme.of(context).accentColor,
                         ),
                       ),
                       BottomNavigationBarItem(
+                        label: '',
                         icon: Icon(
                           Icons.person,
                           color: Theme.of(context).accentColor,
                         ),
                       ),
                     ],
-                    currentIndex: _getPageIndex,
-                    onTap: _onTapChangePage,
-                    backgroundColor: Colors.transparent,
-                    activeColor: Colors.pink,
-                    inactiveColor: Colors.blueGrey,
                   ),
                 ),
               ),
